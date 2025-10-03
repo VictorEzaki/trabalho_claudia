@@ -1,72 +1,96 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cadastro de Chamados</title>
   <style>
-    body{
+    body {
       font-family: Arial, sans-serif;
       margin: 0;
-      height: 100vh; /* altura total da tela */
+      height: 100vh;
+      /* altura total da tela */
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg,#fff,#2575fc);
+      background: linear-gradient(135deg, #fff, #2575fc);
     }
-    .container{
+
+    .container {
       width: 100%;
       max-width: 600px;
       background: #fff;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    h2{
+
+    h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-    .field{
+
+    .field {
       margin-bottom: 15px;
       display: flex;
       flex-direction: column;
     }
-    label{
+
+    label {
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input, select, textarea{
+
+    input,
+    select,
+    textarea {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
     }
+
     input[type="file"] {
       border: none;
       padding: 0;
     }
-    textarea{resize: vertical; min-height: 80px;}
-    button{
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      background: #0ea5a4;
-      color: white;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
     }
-    button:hover{
+
+    .button {
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      /* Adjust padding to make 
+    the button smaller */
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      /* Decrease font size */
+      border-radius: 5px;
+      /* Adjust border radius 
+    for a softer look */
+      cursor: pointer;
+      transition: background-color 0.3s;
+      padding: 1rem;
+    }
+
+    button:hover {
       background: #0c8c8c;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h2>Cadastro de Chamado</h2>
     <form id="chamadoForm">
-      
+
       <div class="field">
         <label for="titulo">Título</label>
         <input type="text" id="titulo" name="titulo" placeholder="Ex: Erro no login" required>
@@ -97,14 +121,14 @@
         <input type="file" id="anexos" name="anexos" multiple>
       </div>
 
-      <button type="submit">Cadastrar Chamado</button>
+      <a href="./kanban.html" class="button">Cadastrar Chamado</a>
     </form>
   </div>
 
   <script>
-    document.getElementById('chamadoForm').addEventListener('submit', function(e){
+    document.getElementById('chamadoForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      
+
       // Captura dos anexos (só como exemplo)
       let arquivos = document.getElementById('anexos').files;
       if (arquivos.length > 0) {
@@ -117,4 +141,5 @@
     });
   </script>
 </body>
+
 </html>
