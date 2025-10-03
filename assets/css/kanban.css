@@ -86,7 +86,10 @@ body {
     the button smaller */
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
     font-size: 14px;
     /* Decrease font size */
     border-radius: 5px;
