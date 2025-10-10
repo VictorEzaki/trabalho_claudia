@@ -20,6 +20,7 @@ body {
 .head img {
     width: 50px;
     margin-right: 10px;
+    
 }
 
 .head h1 {
@@ -142,4 +143,23 @@ body {
     justify-content: space-around;
     margin-bottom: 3px;
 
+}
+
+.button {
+
+    
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 1rem;
+}
+
+.LOGOFF {
+    background-color: #2575fc;
+    display: flex;
+    justify-content: flex-end;
 }
