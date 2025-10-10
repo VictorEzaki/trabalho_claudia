@@ -5,6 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cadastro de Chamados</title>
+
+  <script src="assets/script/kanban.js" defer></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -121,25 +124,9 @@
         <input type="file" id="anexos" name="anexos" multiple>
       </div>
 
-      <a href="./kanban.html" class="button">Cadastrar Chamado</a>
+      <button class="button" type="submit">Cadastrar Chamado</button>
     </form>
   </div>
-
-  <script>
-    document.getElementById('chamadoForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Captura dos anexos (só como exemplo)
-      let arquivos = document.getElementById('anexos').files;
-      if (arquivos.length > 0) {
-        alert(`Chamado cadastrado com ${arquivos.length} anexo(s)!`);
-      } else {
-        alert("Chamado cadastrado sem anexos!");
-      }
-
-      this.reset();
-    });
-  </script>
 </body>
 
 </html>
