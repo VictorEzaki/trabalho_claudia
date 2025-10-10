@@ -7,6 +7,36 @@ document.addEventListener
         renderTasks();
     });
 
+document.getElementById('chamadoForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Coleta os valores do formulário
+  const titulo = document.getElementById('titulo').value.trim();
+  const descricao = document.getElementById('descricao').value.trim();
+  const categoria = document.getElementById('categoria').value.trim();
+  const prioridade = document.getElementById('prioridade').value.trim();
+
+  // Cria a nova tarefa
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const newTask = {
+    id: "task-" + Date.now(),
+    titulo: titulo,
+    content: descricao,
+    categoria: categoria,
+    prioridade: prioridade,
+    status: 'todo' // todas começam no quadro "A Fazer"
+  };
+
+  // Salva no localStorage
+  tasks.push(newTask);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  alert("Chamado cadastrado com sucesso!");
+
+  // Redireciona para o kanban
+  window.location.href = "kanban.html";
+});
+
 // Function to render tasks on the board
 function renderTasks() {
     const columns =
@@ -21,7 +51,7 @@ function renderTasks() {
         tasks.forEach(task => {
             if (task.status === columnId) {
                 const taskElement =
-                    createTaskElement(task.content, task.id);
+                    createTaskElement(task.titulo, task.id);
                 column.querySelector('.task-container').
                     appendChild(taskElement);
             }
@@ -29,14 +59,14 @@ function renderTasks() {
     });
 }
 
-function createTaskElement(content, id) {
+function createTaskElement(titulo, id) {
     const taskId = id
     const task = document.createElement("div");
     task.id = taskId;
     task.className = "task";
     task.draggable = true;
     task.innerHTML =
-        `${content}
+        `${titulo}
     <span class="delete-btn" 
         onclick="deleteTask('${taskId}')">
         
@@ -81,23 +111,6 @@ function drop(event, columnId) {
 
 function capitalizeInput(input) {
     input.value = input.value.toUpperCase();
-}
-
-function addTask(columnId) {
-    const taskInput =
-        document.getElementById('taskInput');
-    const taskContent = taskInput.value.trim();
-    if (taskContent !== "") {
-        const newTask = {
-            id: "task-" + Date.now(),
-            content: taskContent,
-            status: columnId
-        };
-        tasks.push(newTask);
-        updateLocalStorage();
-        renderTasks();
-        taskInput.value = "";
-    }
 }
 
 // Function to update task status 
